@@ -1,0 +1,26 @@
+version: "2.0"
+
+rules:
+
+- rule: Activate form
+  steps:
+  - intent: request_description
+  - action: description_form
+  - active_loop: description_form
+
+- rule: Submit form
+  condition:
+  - active_loop: description_form
+  steps:
+  - action: description_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit
+  - action: utter_slots_values
+
+- rule: Show emotions on saved responses
+  steps:
+  - intent: show_emotions
+  - action: action_analyze_sentiment
+  - action: action_reset_slots

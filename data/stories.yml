@@ -1,0 +1,41 @@
+version: "2.0"
+
+stories:
+
+- story: interactive story 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: affirm
+  - action: description_form
+  - active_loop: description_form
+  - slot_was_set:
+    - requested_slot: first_description
+  - slot_was_set:
+    - first_description: vincent
+  - slot_was_set:
+    - requested_slot: last_description
+  - slot_was_set:
+    - last_description: vincent-mcvincent
+  - slot_was_set:
+    - requested_slot: third_description
+  - slot_was_set:
+    - third_description: vincent-mcvincent
+  - slot_was_set:
+    - requested_slot: fourth_description
+  - slot_was_set:
+    - fourth_description: vincent
+  - slot_was_set:
+    - requested_slot: fifth_description
+  - slot_was_set:
+    - fifth_description: vincent-mcvincent
+  - slot_was_set:
+    - requested_slot: sixth_description
+  - slot_was_set:
+    - sixth_description: vincent-mcvincent
+
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_slots_values

@@ -1,0 +1,106 @@
+version: '3.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- affirm
+- show_emotions
+
+forms:
+  description_form:
+    required_slots:
+      - first_description
+      - last_description
+      - third_description
+      - fourth_description
+      - fifth_description
+      - sixth_description
+
+slots:
+  first_description:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: description_form
+           requested_slot: first_description
+
+  last_description:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: description_form
+           requested_slot: last_description
+  
+  third_description:
+     type: text
+     influence_conversation: true
+     mappings:
+      - type: from_text
+        conditions:
+         - active_loop: description_form
+           requested_slot: third_description
+  
+  fourth_description:
+     type: text
+     influence_conversation: true
+     mappings:
+      - type: from_text
+        conditions:
+         - active_loop: description_form
+           requested_slot: fourth_description
+
+  fifth_description:
+     type: text
+     influence_conversation: true
+     mappings:
+      - type: from_text
+        conditions:
+         - active_loop: description_form
+           requested_slot: fifth_description
+
+  sixth_description:
+     type: text
+     influence_conversation: true
+     mappings:
+      - type: from_text
+        conditions:
+         - active_loop: description_form
+           requested_slot: sixth_description
+
+responses:
+  utter_greet:
+  - text: My friend, I know a game that we can play together and have fun, you want to play?
+
+  utter_goodbye:
+  - text: Bye
+  utter_ask_first_description:
+  - text: Yay! Let's do it! Here's the first picture. What do you think about this picture?
+    image: https://i.imgur.com/EkLBFrM.jpg
+  utter_ask_last_description:
+  - text: Keep going! What else do you see?
+  utter_ask_third_description:
+  - text: Buddy, how does this picture make you feel in your thoughts?
+
+  utter_ask_fourth_description:
+  - text: Here is another picture, what do you think about this picture?
+    image: https://i.imgur.com/YD1UP6N.jpg
+  utter_ask_fifth_description:
+  - text: Please, Keep going! What else do you see?
+  utter_ask_sixth_description:
+  - text: Buddy, what idea did you get from this picture.
+  utter_submit:
+  - text: Ok. Thanks!
+  utter_slots_values:
+  - text: I will remember that your responses are {first_description} {last_description} {third_description} {fourth_description} {fifth_description} {sixth_description} !
+
+actions:
+- utter_greet
+- utter_slots_values
+- utter_submit
+- action_analyze_sentiment
+- action_reset_slots

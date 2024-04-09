@@ -1,0 +1,35 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - /start 
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: show_emotions
+  examples: |
+    - show emotions on my saved responses
+    - display sentiment analysis
+    - analyze sentiments
+    - emotions of my responses
+    - check sentiments
